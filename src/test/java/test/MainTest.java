@@ -6,12 +6,12 @@ import org.testng.annotations.Test;
 public class MainTest extends TestBase {
 
     @Test
-    public void Test() throws InterruptedException {
+    public void Test() {
         openAuth();
         openYaDisc();
-        copyFileToFolder("Скопировать.jpg","копии");
-        openFolder("копии");
+        copyFileToFolder("copy.jpg","copyes");
+        openFolder("copyes");
         deleteAllFiles();
-        Assert.assertEquals("Скопировать.jpg", getFileName());
+        Assert.assertEquals("copy.jpg", getFileName());
     }
 }
