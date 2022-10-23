@@ -1,11 +1,13 @@
-package model;
+package testselenium.model;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import test.TestBase;
+import testselenium.test.TestBase;
 
 public class YaAndAuthPage {
     private WebDriver driver;
+    private String username = "yu.ra1l";
+    private String password = "super16Parol";
 
     public YaAndAuthPage(WebDriver driver) {
         this.driver = driver;
@@ -13,11 +15,10 @@ public class YaAndAuthPage {
 
     public void auth(){
         driver.get(TestBase.BASE_URL);
-//        driver.findElement(By.xpath("//a[@data-statlog='headline.enter']")).click();
         driver.findElement(By.linkText("Войти")).click();
         clickByXPath("//button[@data-type='login']");
-        sendLogin("yu.ra1l");
-        sendPasswordAndEnter("super16Parol");
+        sendLogin(username);
+        sendPasswordAndEnter(password);
     }
 
     public void clickByXPath(String text) {

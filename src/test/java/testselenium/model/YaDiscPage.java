@@ -1,6 +1,7 @@
-package model;
+package testselenium.model;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -17,7 +18,7 @@ public class YaDiscPage {
         this.driver = driver;
     }
 
-    public void openDisc(){
+    public void openDisc() {
         driver.findElement(By.xpath("//span[@class='avatar__image-wrapper']"))
                 .click();
         driver.findElement(By.xpath("//span[@class='usermenu-redesign__item-inner usermenu-redesign__disk-inner']")).click();
@@ -29,8 +30,7 @@ public class YaDiscPage {
         driver.findElement(By.xpath("//div[@aria-label='" + filename + "']")).click();
         driver.findElement(By.xpath(copyButton)).click();
         driver.findElement(By.xpath("//div[@title='" + foldername + "']")).click();
-        driver.findElement(By.cssSelector(".confirmation-dialog__button_submit"))
-                .click();
+        driver.findElement(By.cssSelector(".confirmation-dialog__button_submit")).click();
     }
 
     public void openFolder(String folderName) {
@@ -54,4 +54,13 @@ public class YaDiscPage {
         return text.getText().replace("\n", "");
     }
 
+    public boolean getDeleteFile() {
+        try {
+            driver.findElement(By.xpath("//div[@aria-label='delete.docx']"));
+        } catch (NoSuchElementException exception){
+//            exception.printStackTrace();
+            return false;
+        }
+        return true;
+    }
 }

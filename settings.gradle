@@ -1,2 +1,4 @@
 rootProject.name = 'SimbirSoftTest'
+include 'src:test:apitest'
+findProject(':src:test:apitest')?.name = 'apitest'
 
